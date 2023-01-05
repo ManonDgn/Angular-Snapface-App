@@ -1,0 +1,12 @@
+<div class="face-snap-card">
+    <h2> {{ faceSnap.title }}</h2>
+    <img [src]="faceSnap.imgUrl" [alt]="faceSnap.title">
+    <div class="description-nbr-snaps">
+        <p class="description">{{ faceSnap.description }}</p>
+        <p class="nbr-snaps">
+            <button (click)="onSnap()">{{ btnText }}</button>
+            👏{{ faceSnap.snaps }}
+        </p>
+    </div>
+    <p> Mis en ligne le {{ faceSnap.createdDate }} </p>
+</div>
