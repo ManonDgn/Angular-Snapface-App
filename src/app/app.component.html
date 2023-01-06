@@ -1,3 +1,5 @@
-<app-face-snap [faceSnap]="mySnap"></app-face-snap>
+<app-face-snap *ngFor="let faceSnap of faceSnaps" [faceSnap]="faceSnap"></app-face-snap>
+
+
 
 <router-outlet></router-outlet>
