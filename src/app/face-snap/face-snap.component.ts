@@ -1,4 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { Router } from '@angular/router';
 import { FaceSnap } from '../models/face-snap.model';
 import { FaceSnapsService } from '../services/face-snaps.service';
 
@@ -13,7 +14,9 @@ import { FaceSnapsService } from '../services/face-snaps.service';
 export class FaceSnapComponent implements OnInit {
   @Input() faceSnap!: FaceSnap;
 
-  constructor (private faceSnapsService: FaceSnapsService){
+  constructor (
+    private faceSnapsService: FaceSnapsService,
+    private router: Router){
   }
 
   title!: string;
@@ -24,11 +27,6 @@ export class FaceSnapComponent implements OnInit {
   btnText!: string;
 
   ngOnInit(){
-    this.title = 'Lacs de Fusine';
-    this.description = 'Tarvisio, UD, Italia | Claudia Chiavazza';
-    this.createdDate = new Date();
-    this.snaps = 6;
-    this.imgUrl = 'https://images.unsplash.com/photo-1583244685026-d8519b5e3d21?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80'
     this.btnText = 'Oh Snap!'
   }
 
@@ -40,6 +38,9 @@ export class FaceSnapComponent implements OnInit {
       this.faceSnapsService.snapFaceSnapById(this.faceSnap.id, 'unsnap' )
       this.btnText = 'Oh Snap!';
     }
+  }
 
+  onViewFaceSnap(){
+    this.router.navigateByUrl(`facesnaps/${this.faceSnap.id}`);
   }
 }
